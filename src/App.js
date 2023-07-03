@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import HomeBase from "./HomeBase";
+import TrackForPlayer from "./TrackForPlayer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="board">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <HomeBase color="yellow" />
+              </td>
+              <td>
+                <TrackForPlayer color="red" roatation={180} />
+              </td>
+              <td>
+                <HomeBase color="red" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <TrackForPlayer color="yellow" roatation={90} />
+              </td>
+              <td>
+                <h1>Goal</h1>
+              </td>
+              <td>
+                <TrackForPlayer color="green" roatation={270} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <HomeBase color="blue" />
+              </td>
+              <td>
+                <TrackForPlayer color="blue" roatation={0} />
+              </td>
+              <td>
+                <HomeBase color="green" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
