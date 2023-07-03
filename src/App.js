@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import HomeBase from "./HomeBase";
 import TrackForPlayer from "./TrackForPlayer";
+import FinishGoal from "./FinishGoal";
 
 function App() {
   return (
@@ -10,11 +10,11 @@ function App() {
         <table>
           <tbody>
             <tr>
-              <td>
+              <td align="center">
                 <HomeBase color="yellow" />
               </td>
               <td>
-                <TrackForPlayer color="red" roatation={180} />
+                <TrackForPlayer color="red" roatation={180} type={}/>
               </td>
               <td>
                 <HomeBase color="red" />
@@ -22,13 +22,19 @@ function App() {
             </tr>
             <tr>
               <td>
-                <TrackForPlayer color="yellow" roatation={90} />
+                <TrackForPlayer
+                  color="yellow"
+                  roatation={90}
+                />
               </td>
               <td>
-                <h1>Goal</h1>
+                <FinishGoal />
               </td>
               <td>
-                <TrackForPlayer color="green" roatation={270} />
+                <TrackForPlayer
+                  color="green"
+                  roatation={270}
+                />
               </td>
             </tr>
             <tr>
