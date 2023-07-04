@@ -2,6 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  --red-color: rgb(255, 0, 0);
+  --blue-color: rgba(21, 0, 255);
+  --yellow-color: rgba(246, 255, 0);
+  --green-color: rgb(13, 255, 0);
 }
 
 .board {
@@ -17,22 +21,22 @@
 .homebase.red,
 .track-for-player.red,
 .finish-goal .red {
-  --box-color: rgb(255, 0, 0);
+  --box-color: var(--red-color);
 }
 .homebase.blue,
 .track-for-player.blue,
 .finish-goal .blue {
-  --box-color: rgba(21, 0, 255);
+  --box-color: var(--blue-color);
 }
 .homebase.yellow,
 .track-for-player.yellow,
 .finish-goal .yellow {
-  --box-color: rgba(246, 255, 0);
+  --box-color: var(--yellow-color);
 }
 .homebase.green,
 .track-for-player.green,
 .finish-goal .green {
-  --box-color: rgb(13, 255, 0);
+  --box-color: var(--green-color);
 }
 
 .homebase {
@@ -62,6 +66,16 @@
   border-radius: 50%;
   background-color: var(--box-color);
   margin: 10px;
+  padding: 5px;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.homebase .player-token {
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .track-for-player {

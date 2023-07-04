@@ -37,7 +37,7 @@ function TrackForPlayer({ color, roatation, position }) {
     } else {
       str = "#ffffff";
     }
-    
+
     return { backgroundColor: str };
   };
   return (
@@ -52,7 +52,7 @@ function TrackForPlayer({ color, roatation, position }) {
               <tr key={i}>
                 {row.map((cell, j) => (
                   <td key={j} style={getBgColor(i, j)}>
-                    {i}, {j}
+                    {/* {i}, {j} */}
                   </td>
                 ))}
               </tr>

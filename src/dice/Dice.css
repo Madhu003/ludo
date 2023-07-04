@@ -1,0 +1,44 @@
+.dice {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+  }
+  
+  .rolling {
+    animation: roll 1s ease-in-out;
+  }
+  
+  @keyframes roll {
+    0% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(180deg);
+    }
+    50% {
+      transform: rotate(0);
+    }
+    75% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+  
