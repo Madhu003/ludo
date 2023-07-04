@@ -4,26 +4,45 @@
   align-items: center;
 }
 
+.board {
+  position: relative;
+}
+
+.board td,
+.board > table {
+  padding: 0;
+  border: none;
+}
+
 .homebase.red,
-.track-for-player.red {
+.track-for-player.red,
+.finish-goal .red {
   --box-color: rgb(255, 0, 0);
 }
 .homebase.blue,
-.track-for-player.blue {
-  --box-color: rgba(21, 0, 255, 0.9);
+.track-for-player.blue,
+.finish-goal .blue {
+  --box-color: rgba(21, 0, 255);
 }
 .homebase.yellow,
-.track-for-player.yellow {
-  --box-color: rgba(246, 255, 0, 0.942);
+.track-for-player.yellow,
+.finish-goal .yellow {
+  --box-color: rgba(246, 255, 0);
 }
 .homebase.green,
-.track-for-player.green {
+.track-for-player.green,
+.finish-goal .green {
   --box-color: rgb(13, 255, 0);
 }
 
 .homebase {
+  width: 210px;
+  height: 210px;
   padding: 20px;
   background-color: var(--box-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .homebase .innerbox {
@@ -45,15 +64,27 @@
   margin: 10px;
 }
 
+.track-for-player {
+  z-index: 2;
+  position: relative;
+}
 .track-for-player table,
 .track-for-player td {
   border: 1px solid;
 }
 
 .track-for-player table {
-  width: 100%;
-  height: 320px;
   border-collapse: collapse;
+}
+
+.track-for-player.verticle table {
+  width: 200px;
+  height: 320px;
+}
+
+.track-for-player.horizontal table {
+  width: 320px;
+  height: 200px;
 }
 
 .track-for-player td {
@@ -63,8 +94,22 @@
 .safe-square {
   background-color: #d4d4d4;
 }
+
 .finish-goal {
-  width: 150px;
-  height: 150px;
-  background-color: #d4d4d4;
+  width: 282.84px;
+  /* height: 150px; 141.42  */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transform: rotate(45deg);
+  z-index: 1;
+  position: absolute;
+  top: 281px;
+  left: 284px;
+}
+
+.finish-goal div {
+  background-color: var(--box-color);
+  width: 141.42px;
+  height: 141.42px;
 }

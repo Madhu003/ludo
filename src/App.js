@@ -2,6 +2,7 @@ import "./App.css";
 import HomeBase from "./HomeBase";
 import TrackForPlayer from "./TrackForPlayer";
 import FinishGoal from "./FinishGoal";
+import constants from "./constants";
 
 function App() {
   return (
@@ -11,20 +12,23 @@ function App() {
           <tbody>
             <tr>
               <td align="center">
-                <HomeBase color="yellow" />
+                <HomeBase color="yellow" position={constants.TOP_LEFT} />
               </td>
               <td>
-                <TrackForPlayer color="red" roatation={180} type={}/>
+                <TrackForPlayer
+                  color="red"
+                  position={constants.TOP}
+                />
               </td>
-              <td>
-                <HomeBase color="red" />
+              <td align="center">
+                <HomeBase color="red" position={constants.TOP_RIGHT} />
               </td>
             </tr>
             <tr>
               <td>
                 <TrackForPlayer
                   color="yellow"
-                  roatation={90}
+                  position={constants.LEFT}
                 />
               </td>
               <td>
@@ -33,19 +37,22 @@ function App() {
               <td>
                 <TrackForPlayer
                   color="green"
-                  roatation={270}
+                  position={constants.RIGHT}
                 />
               </td>
             </tr>
             <tr>
-              <td>
-                <HomeBase color="blue" />
+              <td align="center">
+                <HomeBase color="blue" position={constants.BOTTOM_LEFT} />
               </td>
               <td>
-                <TrackForPlayer color="blue" roatation={0} />
+                <TrackForPlayer
+                  color="blue"
+                  position={constants.BOTTOM}
+                />
               </td>
-              <td>
-                <HomeBase color="green" />
+              <td align="center">
+                <HomeBase color="green" position={constants.BOTTOM_RIGHT} />
               </td>
             </tr>
           </tbody>
