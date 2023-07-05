@@ -11,6 +11,10 @@ const constants = {
 
   VERTICLE: "verticle",
   HORIZONTAL: "horizontal",
+  YELLOW: "yellow",
+  RED: "red",
+  BLUE: "blue",
+  GREEN: "green",
 };
 
 export default constants;

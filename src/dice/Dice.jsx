@@ -6,7 +6,7 @@ const Dice = ({ result }) => {
   const [diceValue, setDiceValue] = useState(1);
   const [rolling, setRolling] = useState(false);
 
-  const rollDice = ({ result }) => {
+  const rollDice = () => {
     if (!rolling) {
       setRolling(true);
       const newValue = Math.floor(Math.random() * 6) + 1;

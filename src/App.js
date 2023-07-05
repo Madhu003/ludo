@@ -4,8 +4,24 @@ import TrackForPlayer from "./TrackForPlayer";
 import FinishGoal from "./FinishGoal";
 import constants from "./constants";
 import Dice from "./dice/Dice";
+import { useEffect, useState } from "react";
 
+const playerList = [
+  constants.BLUE,
+  constants.GREEN,
+  constants.RED,
+  constants.YELLOW,
+];
 function App() {
+  const [chance, setChance] = useState(playerList[0]);
+  const [diceResult, setDiceResult] = useState(0);
+
+  useEffect(() => {
+    debugger;
+    const playerIndex = (playerList.indexOf(chance) + 1) % 4;
+    setTimeout(() => setChance(playerList[playerIndex]), 100);
+  }, [diceResult]);
+
   return (
     <div className="App">
       <div className="board">
@@ -58,8 +74,19 @@ function App() {
             </tr>
           </tbody>
         </table>
-        
-        <Dice />
+
+        <Dice result={(op) => setDiceResult(op)} />
+        <div className="">
+          <h1>Chance</h1>
+          <div
+            style={{
+              backgroundColor: `var(--${chance}-color)`,
+              width: "50px",
+              height: "50px",
+              borderRadius: "10px",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );
