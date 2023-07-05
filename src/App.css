@@ -64,18 +64,18 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--box-color);
+  background-color: rgb(228 228 228);
   margin: 10px;
-  padding: 5px;
   vertical-align: middle;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .homebase .player-token {
-  background-color: black;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  margin-left: 20px;
+  background-color: var(--box-color);
 }
 
 .track-for-player {
