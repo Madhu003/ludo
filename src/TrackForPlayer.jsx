@@ -34,6 +34,13 @@ function TrackForPlayer({ color, roatation, position }) {
       (position === constants.RIGHT && i === 2 && j === 4)
     ) {
       str = "var(--box-color)";
+    } else if (
+      (position === constants.TOP && i === 2 && j === 0) ||
+      (position === constants.BOTTOM && i === 3 && j === 2) ||
+      (position === constants.LEFT && i === 2 && j === 2) ||
+      (position === constants.RIGHT && i === 0 && j === 3)
+    ) {
+      str = "rgb(196 195 195)";
     } else {
       str = "#ffffff";
     }
@@ -51,8 +58,9 @@ function TrackForPlayer({ color, roatation, position }) {
             {matrix.map((row, i) => (
               <tr key={i}>
                 {row.map((cell, j) => (
-                  <td key={j} style={getBgColor(i, j)}>
+                  <td key={j} style={getBgColor(i, j)} align="center">
                     {/* {i}, {j} */}
+                    {/* <div className="player-token"></div> */}
                   </td>
                 ))}
               </tr>

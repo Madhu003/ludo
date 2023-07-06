@@ -12,6 +12,10 @@
   position: relative;
 }
 
+.board > table {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .board td,
 .board > table {
   padding: 0;
@@ -22,21 +26,25 @@
 .track-for-player.red,
 .finish-goal .red {
   --box-color: var(--red-color);
+  --token-color: rgb(255, 98, 98);
 }
 .homebase.blue,
 .track-for-player.blue,
 .finish-goal .blue {
   --box-color: var(--blue-color);
+  --token-color: rgb(107, 93, 255);
 }
 .homebase.yellow,
 .track-for-player.yellow,
 .finish-goal .yellow {
   --box-color: var(--yellow-color);
+  --token-color: rgb(173, 179, 0);
 }
 .homebase.green,
 .track-for-player.green,
 .finish-goal .green {
   --box-color: var(--green-color);
+  --token-color: rgb(0, 140, 12);
 }
 
 .homebase {
@@ -74,7 +82,8 @@
   height: 30px;
   border-radius: 50%;
   margin-left: 20px;
-  background-color: var(--box-color);
+  background-color: var(--token-color);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .track-for-player {

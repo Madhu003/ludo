@@ -7,15 +7,6 @@ import Dice from "./dice/Dice";
 import { useContext, useEffect, useState } from "react";
 import { storeForLudo } from "./store";
 
-const initialState = {
-  homeBasePlayerTokenCount: {
-    red: 4,
-    blue: 4,
-    green: 4,
-    yellow: 4,
-  },
-};
-
 const playerList = [
   constants.BLUE,
   constants.GREEN,
@@ -25,88 +16,94 @@ const playerList = [
 function App() {
   const [chance, setChance] = useState(playerList[0]);
   const [diceResult, setDiceResult] = useState(0);
-  const context = useContext(storeForLudo);
+  let context = useContext(storeForLudo);
 
   useEffect(() => {
     console.log(context);
-    if (context?.homeBasePlayerTokenCount?.blue) {
-      context.homeBasePlayerTokenCount.blue = 1;
-    }
+    // if (context?.homeBasePlayerTokenCount?.blue) {
+    //   context.homeBasePlayerTokenCount.blue = 3;
+    // }
   }, []);
 
   useEffect(() => {
     const playerIndex = (playerList.indexOf(chance) + 1) % 4;
     setTimeout(() => setChance(playerList[playerIndex]), 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [diceResult]);
 
   return (
-    <storeForLudo.Provider value={initialState}>
-      <div className="App">
-        <div className="board">
-          <table>
-            <tbody>
-              <tr>
-                <td
-                  align="center"
-                  style={{ backgroundColor: "var(--yellow-color)" }}
-                >
-                  <HomeBase color="yellow" position={constants.TOP_LEFT} />
-                </td>
-                <td>
-                  <TrackForPlayer color="red" position={constants.TOP} />
-                </td>
-                <td
-                  align="center"
-                  style={{ backgroundColor: "var(--red-color)" }}
-                >
-                  <HomeBase color="red" position={constants.TOP_RIGHT} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <TrackForPlayer color="yellow" position={constants.LEFT} />
-                </td>
-                <td>
-                  <FinishGoal />
-                </td>
-                <td>
-                  <TrackForPlayer color="green" position={constants.RIGHT} />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  align="center"
-                  style={{ backgroundColor: "var(--blue-color)" }}
-                >
-                  <HomeBase color="blue" position={constants.BOTTOM_LEFT} />
-                </td>
-                <td>
-                  <TrackForPlayer color="blue" position={constants.BOTTOM} />
-                </td>
-                <td
-                  align="center"
-                  style={{ backgroundColor: "var(--green-color)" }}
-                >
-                  <HomeBase color="green" position={constants.BOTTOM_RIGHT} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="footer">
-            <Dice result={(op) => setDiceResult(op)} />
-            <h1>Chance</h1>
-            <div
-              style={{
-                backgroundColor: `var(--${chance}-color)`,
-                width: "50px",
-                height: "50px",
-                borderRadius: "10px",
-              }}
-            ></div>
-          </div>
+    <div className="App">
+      <div className="board">
+        <table>
+          <tbody>
+            <tr>
+              <td
+                align="center"
+                style={{ backgroundColor: "var(--yellow-color)" }}
+              >
+                <HomeBase color="yellow" position={constants.TOP_LEFT} />
+              </td>
+              <td>
+                <TrackForPlayer color="red" position={constants.TOP} />
+              </td>
+              <td
+                align="center"
+                style={{ backgroundColor: "var(--red-color)" }}
+              >
+                <HomeBase color="red" position={constants.TOP_RIGHT} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <TrackForPlayer color="yellow" position={constants.LEFT} />
+              </td>
+              <td>
+                <FinishGoal />
+              </td>
+              <td>
+                <TrackForPlayer color="green" position={constants.RIGHT} />
+              </td>
+            </tr>
+            <tr>
+              <td
+                align="center"
+                style={{ backgroundColor: "var(--blue-color)" }}
+              >
+                <HomeBase color="blue" position={constants.BOTTOM_LEFT} />
+              </td>
+              <td>
+                <TrackForPlayer color="blue" position={constants.BOTTOM} />
+              </td>
+              <td
+                align="center"
+                style={{ backgroundColor: "var(--green-color)" }}
+              >
+                <HomeBase color="green" position={constants.BOTTOM_RIGHT} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="footer">
+          <Dice
+            result={(op) => {
+              setDiceResult(op);
+              if (context.homeBasePlayerTokenCount[chance] > 0) {
+                context.homeBasePlayerTokenCount[chance]--;
+              }
+            }}
+          />
+          <h1>Chance</h1>
+          <div
+            style={{
+              backgroundColor: `var(--${chance}-color)`,
+              width: "50px",
+              height: "50px",
+              borderRadius: "10px",
+            }}
+          ></div>
         </div>
       </div>
-    </storeForLudo.Provider>
+    </div>
   );
 }
 
