@@ -1,11 +1,13 @@
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import HomeBase from "./HomeBase";
 import TrackForPlayer from "./TrackForPlayer";
 import FinishGoal from "./FinishGoal";
 import constants from "./constants";
 import Dice from "./dice/Dice";
-import { useContext, useEffect, useState } from "react";
 import { storeForLudo } from "./store";
+import tapAudio from "./assets/tap.mp3";
+import { waitFor } from "./utils";
 
 const playerList = [
   constants.BLUE,
@@ -13,6 +15,7 @@ const playerList = [
   constants.RED,
   constants.YELLOW,
 ];
+
 function App() {
   const [chance, setChance] = useState(playerList[0]);
   const [diceResult, setDiceResult] = useState(0);
@@ -23,13 +26,38 @@ function App() {
     // if (context?.homeBasePlayerTokenCount?.blue) {
     //   context.homeBasePlayerTokenCount.blue = 3;
     // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const playerIndex = (playerList.indexOf(chance) + 1) % 4;
-    setTimeout(() => setChance(playerList[playerIndex]), 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [diceResult]);
+  const afterRollingDice = async (op) => {
+    context.processing = true;
+    setDiceResult(op);
+    // setTimeout(async () => {
+    //   for (let i = 0; i < op; i++) {
+    //     new Audio(tapAudio).play();
+    //     await waitFor(500);
+    //   }
+    // }, 1000);
+
+    if (context.homeBasePlayerTokenCount[chance] > 0) {
+      context.homeBasePlayerTokenCount[chance]--;
+    }
+
+    for (let i = 0; i < context.path.blue.length; i++) {
+      for (let j = 0; j < context.path.blue[0].length; j++) {
+        new Audio(tapAudio).play();
+        await waitFor(500);
+
+        context.path.blue[i][j] = { player: constants.BLUE, index: 0 };
+      }
+    }
+
+    context.processing = false;
+
+    // TODO: for changing chance of player
+    // const playerIndex = (playerList.indexOf(chance) + 1) % 4;
+    // setChance(playerList[playerIndex]);
+  };
 
   return (
     <div className="App">
@@ -84,14 +112,7 @@ function App() {
           </tbody>
         </table>
         <div className="footer">
-          <Dice
-            result={(op) => {
-              setDiceResult(op);
-              if (context.homeBasePlayerTokenCount[chance] > 0) {
-                context.homeBasePlayerTokenCount[chance]--;
-              }
-            }}
-          />
+          <Dice result={(op) => setTimeout(() => afterRollingDice(op), 1000)} />
           <h1>Chance</h1>
           <div
             style={{

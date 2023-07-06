@@ -3,7 +3,7 @@ import { storeForLudo } from "./store";
 
 function HomeBase({ color }) {
   const context = useContext(storeForLudo);
-  const playerTokenCount = context?.homeBasePlayerTokenCount[color] || 4;
+  const playerTokenCount = context?.homeBasePlayerTokenCount[color];
 
   const doNeedToMarkPlayer = (count) => {
     return playerTokenCount - count >= 0;

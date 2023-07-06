@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { storeForLudo } from "../store";
 import diceAudio from "../assets/dice-142528.mp3";
 import "./Dice.css";
 
 const Dice = ({ result }) => {
   const [diceValue, setDiceValue] = useState(1);
   const [rolling, setRolling] = useState(false);
+  let context = useContext(storeForLudo);
 
   const rollDice = () => {
-    if (!rolling) {
+    if (!rolling && !context.processing) {
       setRolling(true);
       const newValue = Math.floor(Math.random() * 6) + 1;
       setDiceValue(newValue);

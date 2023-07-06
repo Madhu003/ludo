@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import constants from "./constants";
+import { storeForLudo } from "./store";
 
-const veticleMatrix = new Array(6).fill("").map(() => new Array(3).fill(""));
-const horizontalMatrix = new Array(3).fill("").map(() => new Array(6).fill(""));
 const alignments = { VERTICLE: "verticle", HORIZONTAL: "horizontal" };
 
 // const matrix = new Array(6).fill("").map(() => new Array(3).fill(""));
@@ -10,11 +9,12 @@ const alignments = { VERTICLE: "verticle", HORIZONTAL: "horizontal" };
 function TrackForPlayer({ color, roatation, position }) {
   const [matrix, setMatrix] = useState([[]]);
   const [alignment, setAlignment] = useState(alignments.VERTICLE);
+  const context = useContext(storeForLudo);
+
   useEffect(() => {
+    setMatrix(context.path[color]);
     if (constants.TOP === position || constants.BOTTOM === position) {
-      setMatrix(veticleMatrix);
     } else {
-      setMatrix(horizontalMatrix);
       setAlignment(alignments.HORIZONTAL);
     }
   }, []);

@@ -15,6 +15,7 @@ const constants = {
   RED: "red",
   BLUE: "blue",
   GREEN: "green",
+  COLOR_FLOW: ["blue", "yellow", "red", "green"],
 };
 
 export default constants;

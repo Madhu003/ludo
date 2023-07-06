@@ -15,8 +15,9 @@
 }
 
 .dot {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
   background-color: black;
   border-radius: 50%;
 }
