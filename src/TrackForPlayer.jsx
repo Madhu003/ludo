@@ -55,12 +55,13 @@ function TrackForPlayer({ color, roatation, position }) {
       <div className="innerbox">
         <table>
           <tbody>
-            {matrix.map((row, i) => (
+            {context.path[color].map((row, i) => (
               <tr key={i}>
                 {row.map((cell, j) => (
-                  <td key={j} style={getBgColor(i, j)} align="center">
+                  <td key={j} style={getBgColor(i, j)}>
                     {/* {i}, {j} */}
-                    {/* <div className="player-token"></div> */}
+                    {JSON.stringify(cell)}
+                    {cell?.player && <div className="player-token"></div>}
                   </td>
                 ))}
               </tr>

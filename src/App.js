@@ -43,14 +43,21 @@ function App() {
       context.homeBasePlayerTokenCount[chance]--;
     }
 
-    for (let i = 0; i < context.path.blue.length; i++) {
-      for (let j = 0; j < context.path.blue[0].length; j++) {
-        new Audio(tapAudio).play();
-        await waitFor(500);
+    for (let i = 0; i < op; i++) {
+      new Audio(tapAudio).play();
+      await waitFor(500);
 
-        context.path.blue[i][j] = { player: constants.BLUE, index: 0 };
+      if (context.path.blue[4 - i][0]) {
+        context.path.blue[4 - i][0] = { player: constants.BLUE, index: 0 };
       }
     }
+
+    // for (let i = 0; i < context.path.blue.length; i++) {
+    //   for (let j = 0; j < context.path.blue[0].length; j++) {
+
+    //     context.path.blue[i][j] = { player: constants.BLUE, index: 0 };
+    //   }
+    // }
 
     context.processing = false;
 
