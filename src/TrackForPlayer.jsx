@@ -59,8 +59,8 @@ function TrackForPlayer({ color, roatation, position }) {
               <tr key={i}>
                 {row.map((cell, j) => (
                   <td key={j} style={getBgColor(i, j)}>
-                    {/* {i}, {j} */}
-                    {JSON.stringify(cell)}
+                    {i}, {j}
+                    {/* {JSON.stringify(cell)} */}
                     {cell?.player && <div className="player-token"></div>}
                   </td>
                 ))}
